@@ -8,9 +8,16 @@
 	<meta name="description" content="fullPage very simple demo." />
 	<meta name="keywords"  content="fullpage,jquery,demo,simple" />
 	<meta name="Resource-type" content="Document" />
+	<link rel="shortcut icon" href="./assets/img/gulp-2x.png" />
 
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin:400,500,700&display=swap" />
 	<link rel="stylesheet" type="text/css" href="./dist/fullpage.css" />
+
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/default.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+
+
 	<link rel="stylesheet" type="text/css" href="./assets/css/main.css" />
 </head>
 <body>
@@ -27,21 +34,167 @@
 		</div>
 	</div>
 
-	<div class="section" id="section2"></div>
-	<div class="section" id="section3"><h1>Just the simplest demo ever</h1></div>
-	<div class="section" id="section1">
-	    <div class="slide ">
+	<div class="section active" id="section01">
+		<div>
+			<h2 class="relative">What it is ?</h2>
+			<p class="relative">Javascript task runner in Node environment, <br/> Which creating a build process for HTML, JS, CSS and Other assets</p>
+			<figure>
+				<img src="./assets/img/automation.gif" alt="Gulp" style="height: 50vh;margin-top: -15vh;z-index: 0;position: relative;" />
+			</figure>
+		</div>
+	</div>
+	
+	<div class="section" id="section2" style="color:#fff;">
+		<div class="slide active">
 			<div>
+				<h2>So, What exactly it does ?</h2>
 				<figure>
-					<img src="./assets/img/gulp-2x.png" alt="Gulp" />
+					<img src="./assets/img/bundle.gif" alt="Gulp" />
 				</figure>
-				<h1>Simple Demo</h1>
 			</div>
 		</div>
-	    <div class="slide active"><h1>Only text</h1></div>
-	    <div class="slide"><h1>And text</h1></div>
-	    <div class="slide"><h1>And more text</h1></div>
+	    <div class="slide">
+			<div>
+				<h2 class="relative">Compile preprocessors</h2>
+				<p class="relative">Compile preprocessors like Sass/LESS/Typescript/PUG/Babel</p>
+				<figure>
+					<img src="./assets/img/css-preprocessor-anime.gif" alt="Gulp" style="height: 50vh;z-index: 0;position: relative;" />
+				</figure>
+			</div>
+		</div>
+	    <div class="slide">
+			<div>
+				<h2 class="relative">Optimizing assets</h2>
+				<p class="relative">Optimizing assets like CSS, JavaScript, and images</p>
+				<figure>
+					<img src="./assets/img/compress.gif" alt="Gulp" style="height: 50vh;z-index: 0;position: relative;" />
+				</figure>
+			</div>
+		</div>
+	    <div class="slide">
+			<div>
+				<h2 class="relative">Spinning up a web server</h2>
+				<p class="relative">It can run a local server and run your files</p>
+				<figure>
+					<img src="./assets/img/browser.gif" alt="Gulp" style="height: 50vh;z-index: 0;position: relative;" />
+				</figure>
+			</div>
+		</div>
+	    <div class="slide">
+			<div>
+				<h2 class="relative">Live reload</h2>
+				<p class="relative">Reloading the browser automatically whenever a file is saved</p>
+				<figure>
+					<img src="./assets/img/live.gif" alt="Gulp" style="height: 50vh;z-index: 0;position: relative;" />
+				</figure>
+			</div>
+		</div>
+		<div class="slide">
+			<div>
+				<h2>So, What exactly it does ?</h2>
+				<ul>
+					<li>Compile preprocessors like Sass/LESS/Typescript/PUG/Babel</li>
+					<li>Optimizing assets like CSS, JavaScript, and images</li>
+					<li>Spinning up a web server</li>
+					<li>Reloading the browser automatically whenever a file is saved</li>
+				</ul>
+			</div>
+		</div>
 	</div>
+	<div class="section" id="section3">
+		<div>
+			<h2>Requiremnts</h2>
+			<figure>
+				<img src="./assets/img/node.png" alt="Gulp" style="height: 15em;z-index: 0;position: relative;" />
+			</figure>
+			<p class="relative">If node js and npm not installed, <a href="https://nodejs.org/en/download/" target="_blank">Install from here</a></p>
+		</div>
+	</div>
+
+	<div class="section" id="section4">
+	    <div class="slide active">
+			<div>
+				<h1>Installation</h1>
+				<figure>
+					<img src="./assets/img/install.jpg" alt="Gulp" />
+				</figure>
+			</div>
+		</div>
+	    <div class="slide">
+			<div>
+				<h2>Step 1</h2>
+				<p>Check Node and npm is installed</p>
+				<div class="vscode">
+					<pre><code class="javascript">node --version
+
+npm --version
+					</code></pre>
+				</div>
+				<p class="relative">If node js and npm not installed, <a href="https://nodejs.org/en/download/" target="_blank">Install from here</a></p>
+			</div>
+		</div>
+	    <div class="slide">
+			<div>
+				<h2>Step 2</h2>
+				<p>Install Gulp and check the version </p>
+				<div class="vscode">
+					<pre><code class="javascript">npm install gulp --save-dev
+
+gulp --version
+					</code></pre>
+				</div>
+			</div>
+		</div>
+	    <div class="slide">
+			<div>
+				<h2>Step 3</h2>
+				<p>Create 'gulpfile.js' in the same npm directory</p>
+				<div class="vscode">
+					<pre><code class="javascript">var gulp = require('gulp');
+
+gulp.task('hello', function() {
+	console.log('Hello Zell');
+});
+					</code></pre>
+				</div>
+			</div>
+		</div>
+	    <div class="slide">
+			<div>
+				<h2>That's It! Run</h2>
+				<p>Now you've created a simple gulp task, which runs the task cb() </p>
+				<div class="vscode">
+					<pre><code class="javascript">gulp hello</code></pre>
+				</div>
+				<figure>
+					<img src="./assets/img/hello.png" width="560" alt="Gulp" />
+				</figure>
+			</div>
+		</div>
+	</div>
+
+	<div class="section" id="section5">
+	    <div class="slide active">
+			<div>
+				<h1>Gulp Core Flow</h1>
+			</div>
+		</div>
+	    <div class="slide">
+			<div>
+				<h2>Step 1</h2>
+				<p>Check Node and npm is installed</p>
+				<div class="vscode">
+					<pre><code class="javascript">node --version
+
+npm --version
+					</code></pre>
+				</div>
+				<p class="relative">If node js and npm not installed, <a href="https://nodejs.org/en/download/" target="_blank">Install from here</a></p>
+			</div>
+		</div>
+	</div>
+
+
 </div>
 
 
@@ -49,7 +202,13 @@
 <script type="text/javascript" src="./dist/fullpage.js"></script>
 <script type="text/javascript">
 	var myFullpage = new fullpage('#fullpage', {
-		sectionsColor: ['#f2f2f2', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff']
+		sectionsColor: ['#f2f2f2', '#b5d3d1', '#2b3a42', '#FFFFFF', 'whitesmoke', '#ccddff']
+	});
+
+	document.addEventListener('DOMContentLoaded', (event) => {
+		document.querySelectorAll('pre code').forEach((block) => {
+			hljs.highlightBlock(block);
+		});
 	});
 </script>
 </body>

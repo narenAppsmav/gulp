@@ -36,7 +36,6 @@ h1,h2,h3,h4,h5,h6 {
     font-size: 100%;
     margin:0;
     padding:0;
-    color:#444;
 }
 q:before,q:after {
     content:'';
@@ -61,7 +60,21 @@ body{
 h1{
 	font-size: 6em;
 }
-p{
+h2 {
+    font-size: 4em;
+    margin-bottom: 0.66em;
+}
+ul {
+    font-size: 2em;
+    list-style: disc;
+    display: table;
+    margin: 0 auto;
+    text-align: left;
+}
+li {
+    margin-bottom: 1em;
+}
+p {
 	font-size: 2em;
 }
 .intro p{
@@ -71,4 +84,28 @@ p{
 }
 .section{
 	text-align:center;
+}
+.relative {
+    position: relative;
+    z-index: 1;
+}
+h2 + p {
+    margin-top: -1em;
+}
+a {
+    color: #2da99d;
+    text-decoration: underline;
+}
+
+.vscode {
+    background: #666;
+    padding: 8px;
+    max-width: 500px;
+    margin: 30px auto;
+}
+.vscode .hljs {
+    background: #f2fffc;
+    padding: 20px;
+    min-height: 130px;
+    text-align: left;
 }

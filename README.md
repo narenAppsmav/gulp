@@ -1,15 +1,13 @@
-# gulp
+# Requirements
+node -v
+npm -v
 
-Each gulp task is an asynchronous JavaScript function - a function that accepts an error-first callback or returns a stream, promise, event emitter, child process, or observable
+# Install
+npm init
+npm install gulp --save-dev
 
-Overview
+# Configure 
+touch gulpfile.js
 
-
-Simply
-
-Requirements
-
-Basic setup
-
-
-
+# Run
+gulp
