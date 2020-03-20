@@ -138,7 +138,9 @@ npm --version
 				<h2>Step 2</h2>
 				<p>Install Gulp and check the version </p>
 				<div class="vscode">
-					<pre><code class="javascript">npm install gulp --save-dev
+					<pre><code class="javascript">npm install gulp -g
+
+npm install gulp --save-dev
 
 gulp --version
 					</code></pre>
@@ -176,22 +178,280 @@ gulp.task('hello', function() {
 	<div class="section" id="section5">
 	    <div class="slide active">
 			<div>
-				<h1>Gulp Core Flow</h1>
+				<h1>Gulp Task</h1>
+				<h2>Step 1: Install Dependencies</h2>
+				<p><small>For every tasks, you need to install appropriate plugins <br/> For a Sass to CSS compression, we need install gulp-sass</small></p>
+				<div class="vscode">
+					<pre><code class="javascript">npm install gulp-sass --save-dev</code></pre>
+				</div>
 			</div>
 		</div>
 	    <div class="slide">
 			<div>
-				<h2>Step 1</h2>
-				<p>Check Node and npm is installed</p>
+				<h2>Step 2: Add Task in Gulpfile.js</h2>
+				<p>Define a task name and assign a function to run it using gulp.task()</p>
 				<div class="vscode">
-					<pre><code class="javascript">node --version
+					<pre><code class="javascript">var gulp = require('gulp');
+// Requires the gulp-sass plugin
+var sass = require('gulp-sass');
 
-npm --version
+gulp.task('sass', function(){
+  return gulp.src('app/scss/styles.scss')
+    .pipe(sass()) // Converts Sass to CSS
+    .pipe(gulp.dest('app/css'))
+});
 					</code></pre>
 				</div>
-				<p class="relative">If node js and npm not installed, <a href="https://nodejs.org/en/download/" target="_blank">Install from here</a></p>
 			</div>
 		</div>
+	    <div class="slide">
+			<div>
+				<h2>Step 3: Run Task in CLI</h2>
+				<div class="vscode">
+					<pre><code class="javascript">gulp sass</code></pre>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="section" id="section5">
+	    <div class="slide active">
+			<div>
+				<h2>Gulp Task - Core</h2>
+				<p>Inside every tasks following core process should happen. <br/> src() -> pipe() -> dest()</p>
+				<figure>
+					<img src="./assets/img/core.png" width="400" alt="Gulp" />
+				</figure>
+			</div>
+		</div>
+	    <div class="slide">
+			<div>
+				<h2>Example for preprocessor</h2>
+				<p>Check how the core flow (src > pipe > dest) is working here</p>
+				<div class="vscode">
+					<pre><code class="javascript">var gulp = require('gulp');
+// Requires the gulp-sass plugin
+var sass = require('gulp-sass');
+
+gulp.task('sass', function(){
+  return gulp.src('app/scss/styles.scss')  // Input
+    .pipe(sass()) // Modification: Converts Sass to CSS
+    .pipe(gulp.dest('app/css')) // Output
+});
+					</code></pre>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="section" id="section5">
+	    <div class="slide active">
+			<div>
+				<h2>Multiple Tasks</h2>
+				<div class="vscode">
+				<pre><code class="javascript">var gulp = require('gulp');
+var imagemin = require('gulp-imagemin');
+var less = require('gulp-less');
+
+gulp.task('less', function(){
+	return gulp.src('./test.less')
+	.pipe(less())
+	.pipe(gulp.dest('dist/css'))
+});
+gulp.task('images', function(){
+	return gulp.src('./out/**/*.+(png|jpg|gif|svg)')
+	.pipe(imagemin())
+	.pipe(gulp.dest('dist/images'))
+});
+
+gulp.task('watch', function(){
+	gulp.watch('./test.less', gulp.series(['less'])); 
+});
+
+gulp.task('default', gulp.parallel('images', 'less') );
+					</code></pre>
+				</div>
+			</div>
+		</div>
+	    <div class="slide">
+			<div>
+				<h2>Gulp Watch</h2>
+				<p>This method helps to watch the changes in given files and process the given tasks.</p>
+				<div class="vscode">
+					<pre><code class="javascript">gulp.task('watch', function(){
+	gulp.watch('./test.less', gulp.series(['less'])); 
+});</code></pre>
+				</div>
+				<p><small>gulp.series() used to assign the list of tasks in gulp watch</small></p>
+			</div>
+		</div>
+	    <div class="slide">
+			<div>
+				<h2>Gulp default</h2>
+				<p>This method helps to run all the given tasks in gulp.parallal() .</p>
+				<div class="vscode">
+					<pre><code class="javascript">gulp.task('default', gulp.parallel('images', 'less') );</code></pre>
+				</div>
+				<p><small>gulp.parallel() used to assign the list of tasks in gulp default</small></p>
+			</div>
+		</div>
+	    <div class="slide">
+			<div>
+				<h2>Run with Watch or default</h2>
+				<div class="vscode">
+					<pre><code class="javascript">// Default
+gulp
+
+// Watch
+gulp watch</code></pre>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="section" id="section6">
+		<div class="slide active">
+			<div>
+				<h2>Useful Plugins</h2>
+				<div class="vscode">
+				<pre><code class="javascript">npm install gulp-less --save-dev
+					
+gulp-sass, gulp-less, gulp-postcss //css preprocessors
+gulp-csso //css minify
+gulp-autoprefixer // css autoprefixer
+gulp-cssnano // combine multiple css files to single
+gulp-uglify // minify js
+gulp-browserify // js es6 support
+gulp-concat // combine multiple js files to single
+gulp-inject // Inject js into html
+gulp-minify-html // minify html
+gulp-imagemin // minify images
+gulp-sharp // resize images
+gulp-webserver // Run web server
+browser-sync // Run live update
+					</code></pre>
+				</div>
+			</div>
+		</div>
+
+		<div class="slide">
+			<div>
+				<h2>LESS</h2>
+				<p>You need use `gulp-less` plugin for gulp less convertion and `gulp-clean-css` for minify css</p>
+				<div class="vscode">
+				<pre><code class="javascript"># CLI
+npm install gulp-less gulp-clean-css --save-dev
+
+# Gulpfile.js
+var less = require('gulp-less');
+var cleanCSS = require('gulp-clean-css');
+
+gulp.task('less', function(){
+	return gulp.src('./test.less')
+    .pipe(less())
+    .pipe(cleanCSS({compatibility: 'ie8'}))
+	.pipe(gulp.dest('public/dist/css'))
+});
+
+gulp.task('default', gulp.series( 'less') );
+
+# CLI
+gulp
+				</code></pre>
+			</div>
+		</div>
+		</div>
+		
+		<div class="slide">
+			<div>
+				<h2>Javascript</h2>
+				<p>You can use `gulp-browserify` plugin for gulp js convertion and `gulp-concat` for combine js</p>
+				<div class="vscode">
+				<pre><code class="javascript"># CLI
+npm install gulp-browserify gulp-concat --save-dev
+
+# Gulpfile.js
+var browserify = require('gulp-browserify');
+var concat = require('gulp-concat');
+let uglify = require('gulp-uglify-es').default;
+
+gulp.task("uglify", function () {
+    return gulp.src(['./test-1.js', './test-2.js'])
+    .pipe(concat('./test.js'))
+    .pipe(browserify({
+        insertGlobals : true,
+        debug : true
+    }))
+    .pipe(uglify())
+    .pipe(gulp.dest("public/dist/js"));
+});
+
+gulp.task('default', gulp.series( 'uglify') );
+
+# CLI
+gulp
+				</code></pre>
+			</div>
+		</div>
+		</div>
+		
+		<div class="slide">
+			<div>
+				<h2>Images</h2>
+				<p>You can use `gulp-imagemin` plugin for image compressions</p>
+				<div class="vscode">
+				<pre><code class="javascript"># CLI
+npm install gulp-imagemin --save-dev
+
+# Gulpfile.js
+var imagemin = require('gulp-imagemin');
+
+gulp.task('images', function(){
+	return gulp.src('./out/**/*.+(png|jpg|gif|svg)')
+	.pipe(imagemin())
+	.pipe(gulp.dest('public/dist/images'))
+});
+
+gulp.task('default', gulp.series( 'images') );
+
+# CLI
+gulp
+				</code></pre>
+			</div>
+		</div>
+		</div>
+
+		
+	<div class="slide">
+	<div>
+		<h2>Web Server</h2>
+		<p>You need use `gulp-webserver` plugin for gulp web server</p>
+		<div class="vscode">
+		<pre><code class="javascript"># CLI
+npm install gulp-webserver --save-dev
+
+# Gulpfile.js
+var server = require('gulp-webserver');
+
+gulp.task('server', function() {
+	gulp.src('./public/')	// Your app folder
+	.pipe(server({
+		fallback: './public/index.html',
+		livereload: true,
+		open: true
+	}));
+});
+
+gulp.task('default', gulp.series( 'server') );
+
+# CLI
+gulp
+				</code></pre>
+			</div>
+		</div>
+		</div>
+
+
 	</div>
 
 

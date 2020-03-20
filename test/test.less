@@ -1,0 +1,24 @@
+// Variables
+@themecolor: #0F0;
+@bgcolor: #fff;
+
+body {
+    background: @bgcolor;
+    text-align: center;
+    padding: 60px;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+.box {
+    padding: 50px;
+    color: @themecolor;
+
+    & .btn {
+        padding: 20px;
+    }
+    & p {
+        color: red;
+    }
+}
