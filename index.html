@@ -139,6 +139,9 @@ npm --version
 				<p>Install Gulp and check the version </p>
 				<div class="vscode">
 					<pre><code class="javascript">npm install gulp -g
+npm init
+
+npm install
 
 npm install gulp --save-dev
 
@@ -282,7 +285,7 @@ gulp.task('default', gulp.parallel('images', 'less') );
 	gulp.watch('./test.less', gulp.series(['less'])); 
 });</code></pre>
 				</div>
-				<p><small>gulp.series() used to assign the list of tasks in gulp watch</small></p>
+				<p><small>gulp.series() used to assign the list of tasks to run in one by one manner</small></p>
 			</div>
 		</div>
 	    <div class="slide">
@@ -292,7 +295,7 @@ gulp.task('default', gulp.parallel('images', 'less') );
 				<div class="vscode">
 					<pre><code class="javascript">gulp.task('default', gulp.parallel('images', 'less') );</code></pre>
 				</div>
-				<p><small>gulp.parallel() used to assign the list of tasks in gulp default</small></p>
+				<p><small>gulp.parallel() used to assign the list of tasks to run in parallaly</small></p>
 			</div>
 		</div>
 	    <div class="slide">
